@@ -1,1 +1,36 @@
+*콘솔
+    -시스템 구축
+    -platform: VPC(Virtual Private Cloud) 또는 Classic
+        ~~Classic 환경의 장점
+            !서로 다른 계정의 서버들 간에 사설 통신 가능
+            !리전간 서버들의 사설 통신 가능
+            !다양한 설치형 서버 이미지 이용 가능
+        ~~VPC 환경의 장점
+            !논리적으로 분리된 Network
+            !사용자가 직접 Network 설계 가능
+            !기존 고객의 데이터 센터 네트워크와 유사하게 구현 가능
+            !좀 더 상세하고, 높은 수준의 보안 설정 가능 
 
+*웹서버 설정 순서
+1.사용 권한 설정
+    Sub Account 통해 관리자 권한과 사용자 권한별로 역할 정의 가응
+2.서버 생성
+3.포토 포워딩(classic only) 또는 공인 IP 설정
+4.ACG(Access Control Group) 설정
+    IP/Port 기반 필터링 방화벽 서비스
+    VPC당 500개까지
+    Network interface당 3개까지
+    ACG당 Inbound/outbound 규칙을 각각 50개씩 생성 가능
+    VPC 생성 시 자동으로 Default ACG가 생성됨
+    ACG Outbound 규칙 관련 설정이 없으면 서버에서 보내는 Request(Winhook) 패킷이 차단될 수 있음
+5.관리자 비밀번호 확인
+6.서버 접속
+
+
+1. class vs VPC=>VPC, Ubuntu 20.04는 VPC에서만
+2. 스토리지 종류 SSD
+3. 서버 타입: Standard
+4. 요금제 선택: 월요금제
+5. 서버 개수: 1
+6. Network interface 갯수
+6. 새로운 공인 IP(월 4,032원)
