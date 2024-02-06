@@ -1,0 +1,59 @@
+<pre>
+*콘솔
+    -시스템 구축
+    -platform: VPC(Virtual Private Cloud) 또는 Classic
+        ~~Classic 환경의 장점
+            !서로 다른 계정의 서버들 간에 사설 통신 가능
+            !리전간 서버들의 사설 통신 가능
+            !다양한 설치형 서버 이미지 이용 가능
+        ~~VPC 환경의 장점
+            !논리적으로 분리된 Network
+            !사용자가 직접 Network 설계 가능
+            !기존 고객의 데이터 센터 네트워크와 유사하게 구현 가능
+            !좀 더 상세하고, 높은 수준의 보안 설정 가능 
+
+*웹서버 설정 순서(VPC)
+1. VPC 생성
+2.사용 권한 설정
+    Sub Account 통해 관리자 권한과 사용자 권한별로 역할 정의 가능
+3.서버 생성
+4.포토 포워딩(classic only) 또는 공인 IP 설정
+5.ACG(Access Control Group) 설정
+    IP/Port 기반 필터링 방화벽 서비스
+    VPC당 500개까지
+    Network interface당 3개까지
+    ACG당 Inbound/outbound 규칙을 각각 50개씩 생성 가능
+    VPC 생성 시 자동으로 Default ACG가 생성됨
+    ACG Outbound 규칙 관련 설정이 없으면 서버에서 보내는 Request(Winhook) 패킷이 차단될 수 있음
+6.관리자 비밀번호 확인
+7.서버 접속
+
+
+1. class vs VPC=>VPC, Ubuntu 20.04는 VPC에서만
+2. 스토리지 종류 SSD
+3. 서버 타입: Standard
+4. 요금제 선택: 월요금제
+5. 서버 개수: 1
+6. Network interface 갯수
+6. 새로운 공인 IP(월 4,032원)
+
+
+*VPC 생성
+-이름: ziolabs
+-IP 주소 범위: 192.168.0.0/16, 
+              IPv4 CIDR 블록의 크기가 /16으로 제공되며 65,536개의 주소 공간 제공
+
+-CIDR 블록
+    ~Classic Inter-Domain Routing
+    ~인터넷상의 데이터 라우팅 효율성을 향상시키는 IP주소 할당 방법
+        ~~IP주소는 네트워크 주소와 호스트 주소, 두 부분으로 구성
+        ~~클래스 기반 주소 지정 시스템
+            ~~~네트워크 주소 부분이 고정됨
+            ~~~클래스 A, B, C
+    ~가변 길이 서브넷 마스킹(VLSM)을 사용하여 IP주소의 네트워크와 호스트 주소 비트 간의 비율을 변경
+        ~~서브넷 마스크는 호스트 주소를 0으로 변환하여 IP 주소의 네트워크 주소 값을 반환하는 식별자 집합
+ 
+
+    
+</pre>
+
