@@ -11,4 +11,11 @@
     - sudo ufw allow in "Apache"
         ~port 80만 염
 
+4. HTTPS 가능하게 함
+    1> Mod SSL enable 
+        sudo a2enmod ssl
+        sudo systemctl restart apache2
+    2> Self-Signed SSL Certificate 생성
+        sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/server.yourdomain.com.key -out /etc/ssl/certs/server.yourdomain.com.crt
+
 </pre>
