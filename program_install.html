@@ -1,7 +1,14 @@
 <pre>
 1. 관리자 비밀번호 확인
 2. pytty에서 공인 IP로 root로 로그인
-3. 
-
+3. Apache 설치
+    - sudo apt udpate
+    - sudo apt install apache2
+    - sudo ufw app list 
+        ~Apache: This profile opens only port 80 (normal, unencrypted web traffic).
+        ~Apache Full: This profile opens both port 80 (normal, unencrypted web traffic) and port 443 (TLS/SSL encrypted traffic).
+        ~Apache Secure: This profile opens only port 443 (TLS/SSL encrypted traffic).
+    - sudo ufw allow in "Apache"
+        ~port 80만 염
 
 </pre>
